@@ -43,7 +43,7 @@ connection.addEventListener('close', makeOff);
 msgInput.addEventListener('keypress', event => {
   if (event.key === 'Enter') {
     event.preventDefault();
-    sendMsg();
+    if (!sendMsgBtn.hasAttribute('disabled')) sendMsg();
   };
 });
 
@@ -51,7 +51,6 @@ sendMsgBtn.addEventListener('click', sendMsg);
 
 function sendMsg() {
   if (event.target === sendMsgBtn) event.preventDefault();
-  
   while (msgContent.children.length > 6) {
     msgContent.removeChild(msgContent.firstChild);
   };
